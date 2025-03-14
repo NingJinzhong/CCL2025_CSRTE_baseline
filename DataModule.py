@@ -28,7 +28,6 @@ class CSRTE_Dataset(Dataset):
 
     def __getitem__(self, index):
         data_item  = self.all_data[index]
-        sentence = data_item["sentence"]
         target,decoder_input_text,entity_list,relation_list = self.get_target(data_item,self.order_view)
 
         audio_id = data_item["audio_id"]
@@ -67,6 +66,7 @@ class CSRTE_Dataset(Dataset):
         return all_data,entities_types,relations_types
     def __len__(self):
         return len(self.all_data)
+    def get_target(self,data_item):
 
 if __name__ == "__main__":
     class Hypernum:
@@ -79,4 +79,7 @@ if __name__ == "__main__":
     dataset_info_file_path = "./SRTE_Chinese_info.json"
                 )
     dataset = CSRTE_Dataset('train',hypernum)
+    for item in dataset:
+        print(item)
+        
     
