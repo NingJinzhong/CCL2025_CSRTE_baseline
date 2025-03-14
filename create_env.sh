@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# 检查imre环境是否存在
+# 检查srte环境是否存在
 env_exists=$(conda env list | grep 'srte')
 
 if [[ -z $env_exists ]]; then
@@ -10,12 +10,8 @@ if [[ -z $env_exists ]]; then
     echo "环境创建成功。"
 fi
 
-# 激活srte环境
-echo "正在激活srte环境..."
-conda activate srte
-
-# 安装requirements.txt中的依赖
+# 使用conda run在srte环境中安装requirements.txt中的依赖，并显示输出
 echo "正在安装/更新依赖..."
-pip install -r requirements.txt
+conda run --no-capture-output -n srte pip install -r requirements.txt
 
 echo "依赖安装/更新完成。"

@@ -1,0 +1,6 @@
+PretrainedSpeechModel/*
+!PretrainedSpeechModel/
+.vscode
+__pycache__
+lightning_logs
+swanlog
